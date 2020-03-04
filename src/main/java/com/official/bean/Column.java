@@ -321,4 +321,20 @@ public class Column extends TreeEntitys<Column>{
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Column{" +
+                "columnname='" + columnname + '\'' +
+                ", parentId=" + parentId +
+                ", refno='" + refno + '\'' +
+                ", linktype=" + linktype +
+                ", linkurl='" + linkurl + '\'' +
+                ", template='" + template + '\'' +
+                ", columnpreview='" + columnpreview + '\'' +
+                ", addcontent=" + addcontent +
+                ", ishidden=" + ishidden +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }

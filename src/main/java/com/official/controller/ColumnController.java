@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.official.bean.ResponseBean;
+import com.official.bean.dto.FrontTreeNode;
 import com.official.utils.JWTUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -265,11 +266,21 @@ public class ColumnController {
 					return new ResponseBean(true, 200,"[query the column's information successfully]", columns);
 			}
 		}
-		
-		 
 	 }
-	 
-	 
+
+	/**
+	 * 获取所有栏目
+	 * @return
+     */
+	@ApiOperation(value="查询整棵树",notes="查询整棵树")
+	@ApiImplicitParam(name = "id", value = "主键id", required = true, dataType = "java.lang.Integer")
+	@PostMapping("/getTree")
+	public ResponseBean getTree(){
+		List<Column> columns = columnService.getColumnsInfo();
+		List<FrontTreeNode> list = transferToFrontTreeNodes(columns);
+		List<FrontTreeNode> columnlist = new TreeUtils<FrontTreeNode>().getChildTree(list) ;
+		return new ResponseBean(true, 200,"[query all columns's info successfully]", columnlist);
+	}
 	 
 	 
 	 @ApiOperation(value="关键字查询栏目信息",notes="根据栏目名称和父栏目id查询节目")
@@ -294,12 +305,25 @@ public class ColumnController {
 	 @ApiImplicitParam(name = "id", value = "主键id", required = true, dataType = "java.lang.Integer")
 	 @PostMapping("/getParent")
 	 public ResponseBean getParent(Integer id){
-		            int parentId = columnService.selectParentId(id);
-				    logger.info("获取栏目信息成功!");
-					return new ResponseBean(true, 200,"[query the column's information successfully]", parentId);
+			int parentId = columnService.selectParentId(id);
+			logger.info("获取栏目信息成功!");
+			return new ResponseBean(true, 200,"[query the column's information successfully]", parentId);
+	 }
+
+
+	private List<FrontTreeNode> transferToFrontTreeNodes(List<Column> columns){
+		List<FrontTreeNode> frontTreeNodes = new ArrayList<>();
+		for (Column column:columns) {
+			System.out.print(column);
+			FrontTreeNode ftn = new FrontTreeNode();
+			ftn.setHref("article-template.html");
+			ftn.setText(column.getColumnname());
+			ftn.setTags(null);
+			ftn.setId(column.getId());
+			ftn.setParentId(column.getParentId());
+			frontTreeNodes.add(ftn);
 		}
-	 
-	 
-	 
-	 
+		return frontTreeNodes;
+	}
+
 }

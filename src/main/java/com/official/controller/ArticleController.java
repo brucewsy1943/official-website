@@ -82,7 +82,7 @@ public class ArticleController {
 	 @ApiImplicitParam(name = "file", value = "附件", required = true, dataType = "org.springframework.web.multipart.MultipartFile")
 	 @PostMapping("/uploadfile")
 	 public ResponseBean uploadFile(@RequestParam("file")MultipartFile file) {
-		 String columnPreview = UploadUtils.uploadColumnPreview(file,"file/");
+		 String columnPreview = UploadUtils.uploadColumnPreview(file,"file/");//这个文件夹一定要存在才能成功！
 		 logger.info("-----"+columnPreview);
 		return new ResponseBean(true, 200, "[upload the picture successfully]", columnPreview);
 	 }	

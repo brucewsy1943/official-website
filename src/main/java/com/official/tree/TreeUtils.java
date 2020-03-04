@@ -91,7 +91,8 @@ public class TreeUtils<T extends TreeEntitys<T>> {
                         }
                     }
                     System.out.println(subOneList.size());
-                    t.setChildren(subOneList);
+                    //t.setChildren(subOneList);
+                    t.setNodes(subOneList);
                     resultList.add(t);
                 }
                 return resultList;

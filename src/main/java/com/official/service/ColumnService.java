@@ -54,7 +54,6 @@ public interface ColumnService {
 	  * 根据id查询父节点id
 	  */
 	 int selectParentId(Integer id);
-	 
-	 
+
 	 
 }

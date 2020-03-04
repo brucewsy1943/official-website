@@ -31,7 +31,10 @@ public abstract class TreeEntitys<T>  {
 
 	@Transient
 	protected List<T> children=Lists.newArrayList();		// 根据用户ID查询角色列表
-	
+
+	@Transient
+	protected List<T> nodes=Lists.newArrayList();
+
 	public TreeEntitys() {
 	}
 
@@ -66,5 +69,11 @@ public abstract class TreeEntitys<T>  {
 		this.children = children;
 	}
 
-	
+	public List<T> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<T> nodes) {
+		this.nodes = nodes;
+	}
 }
