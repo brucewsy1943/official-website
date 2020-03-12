@@ -321,6 +321,7 @@ public class ColumnController {
 			ftn.setTags(null);
 			ftn.setId(column.getId());
 			ftn.setParentId(column.getParentId());
+			ftn.setLinkType(column.getLinktype());
 			frontTreeNodes.add(ftn);
 		}
 		return frontTreeNodes;

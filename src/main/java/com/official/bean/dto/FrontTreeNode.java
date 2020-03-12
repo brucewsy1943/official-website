@@ -16,6 +16,7 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
     private String href;
     private List<FrontTreeNode> nodes;
     private String[] tags;
+    private Integer linkType;
 
     public FrontTreeNode() {
     }
@@ -81,13 +82,24 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
         this.id = id;
     }
 
+    public Integer getLinkType() {
+        return linkType;
+    }
+
+    public void setLinkType(Integer linkType) {
+        this.linkType = linkType;
+    }
+
     @Override
     public String toString() {
         return "FrontTreeNode{" +
-                "text='" + text + '\'' +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", text='" + text + '\'' +
                 ", href='" + href + '\'' +
                 ", nodes=" + nodes +
                 ", tags=" + Arrays.toString(tags) +
+                ", linkType=" + linkType +
                 '}';
     }
 }
