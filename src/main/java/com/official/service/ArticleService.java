@@ -28,11 +28,9 @@ public interface ArticleService {
 	    
 	    
 	    PageInfo<ArticleDto> selectByParentId( Integer parentId,Integer  id,PageDto pageDto);
-	    
-	    
+
 	    PageInfo<ArticleDto> selectByParentIdScience( Integer parentId,Integer  id,PageDto pageDto);
-	    
-	    
+
 	    List<ArticleDto> selectArticleSlide(Integer id);
 	    
 	    //文章置顶
@@ -40,4 +38,6 @@ public interface ArticleService {
 	    
 	    //预览发布
 	    Integer previewPubnish(Article article);
+
+		PageInfo<ArticleDto> getByColumn(Integer columnId,PageDto pageDto);
 }

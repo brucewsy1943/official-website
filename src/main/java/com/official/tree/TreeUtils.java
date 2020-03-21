@@ -111,7 +111,8 @@ public class TreeUtils<T extends TreeEntitys<T>> {
      */
     private void  recursionFn(List<T> list, T t) {
         List<T> childList = getChildList(list, t);// 得到子节点列表
-        t.setChildren(childList);
+        //t.setChildren(childList);
+        t.setNodes(childList);
         for (T tChild : childList) {
         	recursionFn(list, tChild);
             if (hasChild(list, tChild)) {// 判断是否有子节点

@@ -64,7 +64,7 @@ public class ColumnController {
 	 @ApiImplicitParam(name = "file", value = "文件预览图", required = true, dataType = "org.springframework.web.multipart.MultipartFile")
 	 @PostMapping("/upload")
 	 public ResponseBean uploadFile(@RequestParam("file")MultipartFile file) {
-		 String columnPreview = UploadUtils.uploadColumnPreview(file,"img/");
+		 String columnPreview = UploadUtils.uploadColumnPreview(file,"/img/");
 		 logger.info("-----"+columnPreview);
 		return new ResponseBean(true, 200, "[upload the picture successfully]", columnPreview);
 		
@@ -79,7 +79,6 @@ public class ColumnController {
 		 String token = (String)subject.getPrincipal();
 		 String username = JWTUtil.getUsername(token);
 		 User user3= userService.selectByName(username);
-		 System.out.println(column.getColumnpreview());
 		 int n = columnService.insert(column);
 		 if (n<=0) {
 			throw new CustomException("新增栏目失败");
@@ -194,16 +193,16 @@ public class ColumnController {
 		for (Column column : columns) {
 			Map<String, Object> map = new HashMap<>();
 			map.put("id", column.getId());
-			map.put("pid", column.getParentId());
-			map.put("name", column.getColumnname());
-			map.put("columnPreview", column.getColumnpreview());
-			map.put("isHidden", column.getIshidden());
-			map.put("linkType", column.getLinktype());
-			map.put("linkUrl", column.getLinkurl());
-			map.put("refNo", column.getRefno());
+			map.put("pid", column.getParent_id());
+			map.put("name", column.getColumnName());
+			map.put("columnPreview", column.getColumnPreview());
+			map.put("isHidden", column.getIsHidden());
+			map.put("linkType", column.getLinkType());
+			map.put("linkUrl", column.getLinkUrl());
+			map.put("refNo", column.getRefNo());
 			map.put("remark", column.getRemark());
 			map.put("template", column.getTemplate());
-			map.put("addContent", column.getAddcontent());
+			map.put("addContent", column.getAddContent());
 			map.put("open", true);
 			mapList.add(map);
 		}
@@ -234,7 +233,7 @@ public class ColumnController {
 	 @PostMapping("/getInfo")
 	 public ResponseBean getInfo(Integer id){
 	
-		 ColumnDto column = columnService.selectById(id);
+		 Column column = columnService.selectById(id);
 		 if (column==null) {
 			throw new CustomException("获取栏目信息失败!");
 		}else {
@@ -254,7 +253,7 @@ public class ColumnController {
 			   logger.info("获取栏目信息成功!");
 			   return new ResponseBean(true, 200,"[query the column's information successfully]", columns);
 		}
-		 ColumnDto column = columnService.selectById(id);
+		 Column column = columnService.selectById(id);
 		 if (column==null) {
 			throw new CustomException("获取栏目信息失败!");
 		}else {
@@ -278,8 +277,9 @@ public class ColumnController {
 	public ResponseBean getTree(){
 		List<Column> columns = columnService.getColumnsInfo();
 		List<FrontTreeNode> list = transferToFrontTreeNodes(columns);
-		List<FrontTreeNode> columnlist = new TreeUtils<FrontTreeNode>().getChildTree(list) ;
-		return new ResponseBean(true, 200,"[query all columns's info successfully]", columnlist);
+		List<FrontTreeNode> columnlist = new TreeUtils<FrontTreeNode>().getChildTree(list);
+		List<FrontTreeNode> result = generateBanner(columnlist);
+		return new ResponseBean(true, 200,"[query all columns's info successfully]", result);
 	}
 	 
 	 
@@ -316,15 +316,45 @@ public class ColumnController {
 		for (Column column:columns) {
 			System.out.print(column);
 			FrontTreeNode ftn = new FrontTreeNode();
-			ftn.setHref("article-template.html");
-			ftn.setText(column.getColumnname());
+			ftn.setHref(column.getTemplate());
+			ftn.setText(column.getColumnName());
 			ftn.setTags(null);
 			ftn.setId(column.getId());
-			ftn.setParentId(column.getParentId());
-			ftn.setLinkType(column.getLinktype());
+			ftn.setParentId(column.getParent_id());
+			ftn.setLinkType(column.getLinkType());
+			ftn.setRefno(column.getRefNo());
+			ftn.setBannerPic(column.getColumnPreview());
 			frontTreeNodes.add(ftn);
+
 		}
 		return frontTreeNodes;
+	}
+
+	//处理一下banner图。因为只有一级栏目有，所以把一级所有下面的栏目都手动加上banner
+	private List<FrontTreeNode> generateBanner(List<FrontTreeNode> firstColumns){
+		for (int i = 0; i < firstColumns.size(); i++) {
+			FrontTreeNode firstColumn = firstColumns.get(i);
+			List<FrontTreeNode> children = firstColumn.getNodes();
+			//对子栏目进行递归查找
+			if (children!=null && children.size()>0){
+				recursion(children,firstColumn.getBannerPic());
+			}
+		}
+
+		return firstColumns;
+	}
+
+	//递归查找方法
+	private void recursion(List<FrontTreeNode> children,String bannerPic){
+		for (int j = 0; j < children.size(); j++) {
+			FrontTreeNode childrenColumn = children.get(j);
+			if (childrenColumn.getBannerPic() == null || "".equals(childrenColumn.getBannerPic())){
+				childrenColumn.setBannerPic(bannerPic);
+			}
+			if (childrenColumn.getNodes() != null && childrenColumn.getNodes().size() > 0) {
+				recursion(childrenColumn.getNodes(), childrenColumn.getBannerPic());
+			}
+		}
 	}
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.official.bean.Column;
-import com.official.bean.dto.ColumnDto;
 import com.official.service.ColumnService;
 
 @Service
@@ -40,8 +39,8 @@ public class CoulumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public ColumnDto selectById(Integer id) {
-		ColumnDto column = columnMapper.selectByPrimaryKey(id);
+	public Column selectById(Integer id) {
+		Column column = columnMapper.selectByPrimaryKey(id);
 		return column;
 	}
 

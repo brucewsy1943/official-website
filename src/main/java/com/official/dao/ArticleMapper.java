@@ -12,12 +12,9 @@ public interface ArticleMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-
     int insert(Article record);
-
     
     Article selectByPrimaryKey(Integer id);
-
     
     List<ArticleDto> selectAll();
 
@@ -26,19 +23,16 @@ public interface ArticleMapper {
     List<ArticleDto> selectByParentId(@Param("parentId") Integer parentId,@Param("id")Integer  id);
     
     List<ArticleDto> selectByParentIdScience(@Param("parentId") Integer parentId,@Param("id")Integer  id);
-    
-    
+
     int updateByPrimaryKey(Article record);
-    
-    
+
     List<ArticleDto> fuzzySearch(@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("keyword")String keyword);
-    
-    
-    
+
     List<ArticleDto> selectArticleSlide(Integer id);
-    
-    
+
     Integer articleStick(Article article);
     
     Integer previewPubnish(Article article);
+
+    List<ArticleDto> selectByColumnId(@Param("columnId")Integer columnId);
 }

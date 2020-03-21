@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.official.bean.Article" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="subTitle" property="subTitle" jdbcType="VARCHAR"/>
     <result column="columnId" property="columnid" jdbcType="INTEGER" />
     <result column="isStick" property="isstick" jdbcType="INTEGER" />
     <result column="linkType" property="linktype" jdbcType="INTEGER" />
@@ -23,6 +24,7 @@
      <result column="createdTime" property="createdTime" jdbcType="TIMESTAMP" />
      <result column="modifiedTime" property="modifiedTime" jdbcType="TIMESTAMP" />
      <result column="userId" property="userId" jdbcType="INTEGER" />
+
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_article
@@ -30,14 +32,14 @@
   </delete>
   
   <insert id="insert" parameterType="com.official.bean.Article" >
-    insert into t_article (title, columnId, 
+    insert into t_article (title,subTitle,columnId,
       isStick, linkType, linkUrl, 
       interception, contentSource, status, 
       clicks, pubTimeType, pubTime, 
       expiredTimeType, expiredTime, navPicturePath, 
       attachmentPath, orderPriority, content,createdTime,modifiedTime,userId
       )
-    values (#{title,jdbcType=VARCHAR}, #{columnid,jdbcType=INTEGER}, 
+    values (#{title,jdbcType=VARCHAR},#{subTitle,jdbcType=VARCHAR}, #{columnid,jdbcType=INTEGER},
       #{isstick,jdbcType=INTEGER}, #{linktype,jdbcType=INTEGER}, #{linkurl,jdbcType=VARCHAR}, 
       #{interception,jdbcType=VARCHAR}, #{contentsource,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{clicks,jdbcType=INTEGER}, #{pubtimetype,jdbcType=INTEGER}, #{pubtime}, 
@@ -50,6 +52,7 @@
   <update id="updateByPrimaryKey" parameterType="com.official.bean.Article" >
     update t_article
     set title = #{title,jdbcType=VARCHAR},
+       subTitle = #{subTitle,jdbcType=VARCHAR},
       columnId = #{columnid,jdbcType=INTEGER},
       isStick = #{isstick,jdbcType=INTEGER},
       linkType = #{linktype,jdbcType=INTEGER},
@@ -76,6 +79,7 @@
    <update id="articleStick" parameterType="com.official.bean.Article" >
     update t_article
     set title = #{title,jdbcType=VARCHAR},
+      subTitle = #{subTitle,jdbcType=VARCHAR},
       columnId = #{columnid,jdbcType=INTEGER},
       isStick = #{isstick,jdbcType=INTEGER},
       linkType = #{linktype,jdbcType=INTEGER},
@@ -101,6 +105,7 @@
   <update id="previewPubnish" parameterType="com.official.bean.Article" >
     update t_article
     set title = #{title,jdbcType=VARCHAR},
+       subTitle = #{subTitle,jdbcType=VARCHAR},
       columnId = #{columnid,jdbcType=INTEGER},
       isStick = #{isstick,jdbcType=INTEGER},
       linkType = #{linktype,jdbcType=INTEGER},
@@ -124,7 +129,7 @@
   </update>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, title, columnId, isStick, linkType, linkUrl, interception, contentSource, 
+    select id, title,subTitle,columnId, isStick, linkType, linkUrl, interception, contentSource,
     status, clicks, pubTimeType, pubTime, expiredTimeType, expiredTime, navPicturePath, 
     attachmentPath, orderPriority, content,createdTime,modifiedTime,userId
     from t_article
@@ -132,7 +137,7 @@
   </select>
   
   <select id="selectAll" resultType="com.official.bean.dto.ArticleDto" >
-    select a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+    select a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
@@ -143,7 +148,7 @@
   
   
   <select id="getArticleListScience" resultType="com.official.bean.dto.ArticleDto" >
-    select a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+    select a.id, a.title,a.subTitle, c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
@@ -155,19 +160,18 @@
   
   
   <select id="selectArticleSlide" resultType="com.official.bean.dto.ArticleDto" parameterType="java.lang.Integer">
-    select  a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+    select  a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
     left join t_column as c on a.columnId=c.id
-    left join t_user as u on u.id=a.userId 
      where a.columnId = #{id} and a.navPicturePath &lt;&gt;"" and a.status=1
       order by a.pubTime desc LIMIT 0,4
   </select>
   
   
   <select id="fuzzySearch" resultType="com.official.bean.dto.ArticleDto" parameterType="java.lang.String">
-  select a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+  select a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
@@ -176,7 +180,7 @@
     <where>
     
     <if test='startTime!="" and endTime!="" and keyword!="" '>
-        a.pubTime BETWEEN #{startTime} and #{endTime} and a.title like concat(concat('%',#{keyword},'%'))
+        a.pubTime BETWEEN #{startTime} and #{endTime} and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
     
     <if test='startTime!="" and endTime!="" and keyword=="" '>
@@ -184,15 +188,15 @@
     </if>
     
     <if test='startTime=="" and endTime=="" and keyword!="" '>
-     a.title like concat(concat('%',#{keyword},'%'))
+     a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%'))
     </if>
     
     <if test='startTime!="" and endTime=="" and keyword!="" '>
-      a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00' and  a.title like concat(concat('%',#{keyword},'%'))
+      a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00' and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
     
     <if test='startTime=="" and endTime!="" and keyword!="" '>
-      a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime} and  a.title like concat(concat('%',#{keyword},'%'))
+      a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime} and  (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
     
     <if test='startTime=="" and endTime=="" and keyword=="" '>
@@ -211,7 +215,7 @@
   </select>
 
   <select id="selectByParentId" resultType="com.official.bean.dto.ArticleDto" parameterType="java.lang.Integer">
-  select a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+  select a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
@@ -243,7 +247,7 @@
   
   
    <select id="selectByParentIdScience" resultType="com.official.bean.dto.ArticleDto" parameterType="java.lang.Integer">
-  select a.id, a.title,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource, 
+  select a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
     a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath, 
     a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
     from t_article as a 
@@ -270,4 +274,19 @@
 
     order by a.orderPriority,a.pubTime desc
   </select>
+
+  <!-- 根据栏目查找文章 -->
+<select id="selectByColumnId" resultType="com.official.bean.dto.ArticleDto" parameterType="java.lang.Integer">
+  select a.id, a.title,a.subTitle,c.columnName,a.columnId,u.userName,a.userId,a.isStick, a.linkType, a.linkUrl, a.interception, a.contentSource,
+  a.status, a.clicks, a.pubTimeType, a.pubTime, a.expiredTimeType, a.expiredTime, a.navPicturePath,
+  a.attachmentPath, a.orderPriority, a.content,a.createdTime,a.modifiedTime
+  from t_article as a
+  left join t_column as c on a.columnId=c.id
+  left join t_user as u on u.id=a.userId
+  where  a.status =1
+  AND a.columnId = #{columnId}
+  order by a.orderPriority,a.pubTime desc
+</select>
+
+
 </mapper>

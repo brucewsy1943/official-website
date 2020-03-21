@@ -15,6 +15,9 @@ public class Article {
      */
     private String title;
 
+
+    private String subTitle;
+
     /*
      * 栏目id(外键)
      */
@@ -331,5 +334,13 @@ public class Article {
     
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 }

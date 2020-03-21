@@ -73,5 +73,6 @@ public class JwtFilter extends BasicHttpAuthenticationFilter{
 			 httpServletResponse.sendRedirect("/401"); 
 			 } catch (IOException e) {
 				 e.getMessage();
-				 } }
+		 }
+	 }
 }

@@ -23,8 +23,8 @@ public class WebConfig  implements WebMvcConfigurer {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(getMyInterceptor())
-		              .addPathPatterns("/article/getInformation");
+		/*registry.addInterceptor(getMyInterceptor())
+		              .addPathPatterns("/article/getInformation");*/
 		registry.addInterceptor(getInterceptor())
 		              .addPathPatterns("/article/index");
 	}

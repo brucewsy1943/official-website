@@ -62,15 +62,25 @@ public class ArticleController {
 	  * @param file
 	  * @return
 	  */ 
-	 @ApiOperation(value="上传文章导航图",notes="文章导航图存储到tomcat服务器")
+	 /*@ApiOperation(value="上传文章导航图",notes="文章导航图存储到tomcat服务器")
 	 @ApiImplicitParam(name = "file", value = "文章导航图", required = true, dataType = "org.springframework.web.multipart.MultipartFile")
 	 @PostMapping("/upload")
 	 public ResponseBean uploadFile(String file) {
 		 //时间戳避免文件名重复
-		 String columnPreview= UploadUtils.GenerateImage(file, "img/"+System.currentTimeMillis()+".jpg");
-		 logger.info("-----"+columnPreview);
-		 return new ResponseBean(true, 200, "[upload the picture successfully]", columnPreview);
+		 String navPreview= UploadUtils.GenerateImage(file, "/img/"+System.currentTimeMillis()+".jpg");
+		 logger.info("-----"+navPreview);
+		 return new ResponseBean(true, 200, "[upload the picture successfully]", navPreview);
 		
+	}*/
+
+	@ApiOperation(value="上传栏目预览图",notes="栏目预览图存储到tomcat服务器")
+	@ApiImplicitParam(name = "file", value = "文件预览图", required = true, dataType = "org.springframework.web.multipart.MultipartFile")
+	@PostMapping("/uploadnav")
+	public ResponseBean uploadNavPic(@RequestParam("file")MultipartFile file) {
+		String columnPreview = UploadUtils.uploadColumnPreview(file,"/img/");
+		logger.info("-----"+columnPreview);
+		return new ResponseBean(true, 200, "[upload the picture successfully]", columnPreview);
+
 	}
 	 
 	 /**
@@ -151,6 +161,7 @@ public class ArticleController {
 		  article2.setTitle(article.getTitle());
 		  article2.setUserId(user.getId());
           article2.setCreatedTime(new Timestamp(new Date().getTime()));
+		 article2.setSubTitle(article.getSubTitle());
 		  for (Integer integer : integers) {
 			article2.setColumnid(integer);
 			 int n = articleService.insert(article2);
@@ -233,6 +244,7 @@ public class ArticleController {
 	          article2.setColumnid(integers.get(0));
 	          article2.setCreatedTime(Timestamp.valueOf(article.getCreatedtime()));
 	          article2.setModifiedTime(new Timestamp(new Date().getTime()));
+			 article2.setSubTitle(article.getSubTitle());
 		     int n = articleService.updateByPrimaryKey(article2);
 		 if (n<=0) {
 			throw new CustomException("更新文章失败");
@@ -345,10 +357,6 @@ public class ArticleController {
 		 
 	 }
 	 
-	 
-	 
-	 
-	 
 	 @ApiOperation(value="关键字查询文章信息",notes="根据发布时间和关键字查询文章信息")
 	 @ApiImplicitParams({
 		 @ApiImplicitParam(name = "startTime", value = "开始时间", required = false, dataType = "java.lang.String"),
@@ -357,6 +365,15 @@ public class ArticleController {
 	 })
 	 @PostMapping("/fuzzySearch")
      public ResponseBean fuzzySearch(String startTime,String endTime,String keyword,Integer pageNum,Integer pageSize){
+		 if(startTime == null){
+			 startTime = "";
+		 }
+		 if(endTime == null){
+			 endTime = "";
+		 }
+		 if(keyword == null){
+			 keyword = "";
+		 }
 		 PageDto pageDto = new PageDto();
 		 pageDto.setPageNum(pageNum);
 		 pageDto.setPageSize(pageSize);
@@ -452,9 +469,7 @@ public class ArticleController {
 						    count++;
 					}
 				}
-				   
-				 
-				   
+
 				  if (count>0) {
 					   //如果id不为0且父栏目id为0时,并且子栏目下还有子栏目时,加载所有子栏目下子栏目的文章
 					   PageInfo<ArticleDto> articleDtos = articleService.selectByParentIdScience(1, id,pageDto);
@@ -529,8 +544,19 @@ public class ArticleController {
 		return  new ResponseBean(true, 200,"[stick the article successfully]", null);
  
 	 }
-	 
-	 
+
+	@PostMapping("/getByColumn")
+	public ResponseBean searchArticleByColumn(Integer columnId,Integer pageNum,Integer pageSize) throws Exception {
+		if (columnId == null){
+			throw new Exception("栏目id不能为空");
+		}
+		PageDto pageDto = new PageDto();
+		pageDto.setPageNum(pageNum);
+		pageDto.setPageSize(pageSize);
+		PageInfo<ArticleDto> pageInfo = articleService.getByColumn(columnId,pageDto);
+		return new ResponseBean(true, 200,"[fuzzySearch articles was successful]", pageInfo);
+	}
+
 	 
 	 @ApiOperation(value="访问首页",notes="访问首页")
 	 @PostMapping("/index")

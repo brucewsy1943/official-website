@@ -3,7 +3,6 @@ package com.official.service;
 import java.util.List;
 
 import com.official.bean.Column;
-import com.official.bean.dto.ColumnDto;
 
 public interface ColumnService {
 	 /*
@@ -26,7 +25,7 @@ public interface ColumnService {
 	 /*
 	  * 根据主键id查询栏目信息
 	  */
-	 ColumnDto selectById(Integer id);
+	 Column selectById(Integer id);
 	 
 	 /*
 	  * 根据主键id查询所有子节点id

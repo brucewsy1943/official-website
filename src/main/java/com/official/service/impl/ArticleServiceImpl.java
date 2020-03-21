@@ -108,5 +108,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.previewPubnish(article);
 	}
 
-
+	@Override
+	public PageInfo<ArticleDto> getByColumn(Integer columnId, PageDto pageDto) {
+		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize());
+		List<ArticleDto> articleDtos = articleMapper.selectByColumnId(columnId);
+		PageInfo<ArticleDto> pagelist = new PageInfo<ArticleDto>(articleDtos);
+		return pagelist;
+	}
 }
