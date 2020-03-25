@@ -285,7 +285,7 @@
   left join t_user as u on u.id=a.userId
   where  a.status =1
   AND a.columnId = #{columnId}
-  order by a.orderPriority,a.pubTime desc
+  order by a.orderPriority asc,a.pubTime desc
 </select>
 
 

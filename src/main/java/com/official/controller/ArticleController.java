@@ -227,11 +227,11 @@ public class ArticleController {
 			  if (article.getIsstick()==1) {
 				  article2.setOrderpriority(1);
 			}else{
-				 if (article.getOrderpriority()==1) {
-					 article2.setOrderpriority(99);
-				}else {
+				// if (article.getOrderpriority()==1) {
+					 /*article2.setOrderpriority(99);*/
+				//}else {
 					article2.setOrderpriority(article.getOrderpriority());
-				}
+			//	}
 				  
 			}
 			  article2.setLinktype(article.getLinktype());
