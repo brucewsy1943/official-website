@@ -19,11 +19,12 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
     private Integer linkType;
     private String refno;//栏目标识
     private String bannerPic;//导航图
+    private String remark;//栏目备注
 
     public FrontTreeNode() {
     }
 
-    public FrontTreeNode(Integer id, Integer parentId, String text, String href, List<FrontTreeNode> nodes, String[] tags, Integer linkType, String refno, String bannerPic) {
+    public FrontTreeNode(Integer id, Integer parentId, String text, String href, List<FrontTreeNode> nodes, String[] tags, Integer linkType, String refno, String bannerPic, String remark) {
         this.id = id;
         this.parentId = parentId;
         this.text = text;
@@ -33,6 +34,7 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
         this.linkType = linkType;
         this.refno = refno;
         this.bannerPic = bannerPic;
+        this.remark = remark;
     }
 
     @Override
@@ -113,6 +115,14 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
         this.bannerPic = bannerPic;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     public String toString() {
         return "FrontTreeNode{" +
@@ -125,6 +135,7 @@ public class FrontTreeNode extends TreeEntitys<FrontTreeNode> {
                 ", linkType=" + linkType +
                 ", refno='" + refno + '\'' +
                 ", bannerPic='" + bannerPic + '\'' +
+                ", remark='" + remark + '\'' +
                 '}';
     }
 }

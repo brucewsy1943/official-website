@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<link rel="stylesheet" type="text/css" href="../css/assert/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../css/assert/animate.css" />
+		<link rel="stylesheet" type="text/css" href="../css/assert/aos.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../css/rolling-news.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common/common.css"/>
+		<title>苏研院官网首页</title>
+		<style type="text/css">
+			.customize-carousel {
+				position: static;
+				margin-left: 0px;
+				width: 100%;
+				margin-top: 30px;
+			}
+
+			.customize-carousel li {
+				background-color: #d9d6d3;
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+
+			.customize-carousel .active {
+				background-color: #30b7ef;
+			}
+
+			#banner2 {
+				background: ghostwhite;
+				/* height: 350px; */
+			}
+
+			.add-background {
+				background: #FAF2CC !important;
+				color: whitesmoke;
+			}
+
+			.case {
+				background: url(../images/index/case_bg.png);
+				margin-bottom: 40px;
+			}
+
+			.case .row div {
+				background-clip: content-box;
+				background-color: ghostwhite;
+			}
+
+			.more {
+				margin-top: 12px;
+				font-size: 1.4rem;
+				color: #999;
+				line-height: 14px;
+				padding-bottom: 10px;
+				text-indent: 2rem;
+			}
+			.add-bottom-margin{
+				padding-bottom: 40px;
+				padding-top: 40px;
+			}
+			.introduction-text{
+				/* font-family: simsun; */
+				height: 100%; 
+				background-clip:content-box;
+				text-align: left;
+				position: relative;
+			}
+			.introduction-text h2{
+				text-align: center;
+				font-weight: bold;
+			}
+			.introduction-text h3{
+				text-align: center;
+				font-weight: bold;
+			}
+			.newscolumn{
+				margin-bottom: 20px;
+			 	height: 160px; 
+				width: 360px;
+				background: #FFFFFF;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+			.cName {
+				font-size: 2.4rem;
+				color: #333;
+				line-height: 40px;
+				text-align: center;
+				font-weight: bolder;
+			}
+			.eName {
+				margin-top: 8px;
+				font-size: 1.2rem;
+				color: #999;
+				line-height: 12px;
+				padding-left: 2em;
+			}
+			/* .about_tit{
+				padding-top: 20px;
+			} */
+			.add-no-padding-top{
+				padding-top: 0px;
+			}
+			.newscolumn-date{
+				font-size: 42px;
+				color: #f6b827;
+				height: 50%!important;
+				vertical-align: middle;
+				padding-top: 10px;
+			}
+			.newscolumn-subdate{
+				font-size: 1.2rem;
+				color: #666;
+				height: 50%!important;
+			}
+			.newscolumn-title{
+				position: relative;
+				vertical-align: middle;
+				height: 30%!important;
+				font-size: 1.8rem;
+				font-weight: bold;
+				top:14%
+			}
+			.newscolumn-subtitle{
+				color: #999;
+				height: 50%!important;
+			}
+			.newscolumn div:nth-child(1){
+				height: 100%;
+			}
+			.newscolumn div:nth-child(2){
+				height: 100%;
+			}
+			.newscolumn img{
+				position: relative;
+				top: 15%;
+				width: 100%;
+				/* width: 90px; */
+				height: 70%;
+			}
+			.newscolumn div{
+				vertical-align: middle;
+			}
+			.newscolumn .col-md-4{
+				text-align: center;
+			}
+			.carousel-imgs img{
+				width: 90%;
+			}
+			#main-container .list-group {
+				margin-bottom: 0px; 
+			}
+			i.glyphicon.glyphicon-ok {
+				color: #00BCE4;
+				font-size: 0.8em;
+				margin: 0 0.5em 0;
+			}
+			
+			.carousel-indicators{
+				visibility: hidden;
+				bottom: 15%;
+			}
+			.carousel-indicators li {
+				width: 40px;
+				border-radius: 3px;
+			}
+			.carousel-indicators .active {
+				width: 40px;
+				height: 12px;
+				margin: 0;
+				background-color: #fff;
+			}
+			.cont{
+				font-size: 1.8rem;
+				color: #000000;
+				line-height: 30px;
+			}
+			#introduction{
+				display: inline-block;
+				color: #000000;
+			}
+			/* #banner{
+				width: 650px;
+				margin:0 auto;
+			}
+			#introduction{
+				width: 450px;
+				margin:0 auto;
+			} */
+			
+			
+			@media (min-width:1550px) {
+				#introduction p{
+					font-size: 18px!important;
+					line-height: 2.2em!important;
+				}
+				
+				.article-head h4{
+					font-size: 24px;
+				}
+			}
+			
+			@media (min-width:1380px) {
+				#introduction p{
+					line-height: 2em!important;
+				}
+				.article-head h4{
+					font-size: 24px;
+				}
+			}
+			
+			/* #introduction{
+				overflow: hidden;
+				text-overflow: ellipsis;
+			} */
+		</style>
+	</head>
+	
+	<body>
+		<header id="hd">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<!--<a class="navbar-brand" href="#">Brand</a>-->
+						<form class="col-xs-10 navbar-form visible-xs" style="margin: 0;padding-right: 0;padding-left: 0;border: 0;">
+							<div class="col-xs-9" style="padding-right: 0;">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+							<div class="col-xs-2">
+								<button class="btn btn-default" type="submit">搜索</button>
+							</div>
+						</form>
+						<div class="col-xs-2 visible-xs" style="text-align: center;padding-left: 0;padding-right: 0;">
+							<button type="button" class="navbar-toggle collapsed"
+							 data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul id="navs" class="nav navbar-nav" style="float: none;">
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</header>
+		
+		<!-- 轮播图 -->
+		<!-- <div class="container-fluid" style="margin-top: 20px;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="newstitle" style="margin-bottom: 0;">
+						<h3 class="title">
+							单位概况
+						</h3>
+						<div class="subtitle">
+							ABOUT US
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div class="container-fluid" style="padding-top: 20px;">
+			<div class="row">
+				<div class="col-xs-7">
+					<div id="banner" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#banner" data-slide-to="0" class="active"></li>
+							<li data-target="#banner" data-slide-to="1"></li>
+							<li data-target="#banner" data-slide-to="2"></li>
+							<li data-target="#banner" data-slide-to="3"></li>
+						</ol>
+					
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<img src="../images/index/banner1.jpg" alt="...">
+							</div>
+							<div class="item">
+								<img src="../images/index/banner2.jpg" alt="...">
+							</div>
+							<div class="item">
+								<img src="../images/index/banner3.jpg" alt="...">
+							</div>
+							<div class="item">
+								<img src="../images/index/banner4.jpg" alt="...">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-5 clearfix" style="vertical-align: middle;">
+					<!-- <div class="newstitle" style="margin-bottom: 0;"> -->
+						<!-- <h3 class="title">
+							单位简介
+						</h3>
+						<div class="subtitle">
+							ABOUT US
+						</div> -->
+						<a id="introduction">
+							<div class="article-head">
+								<h4 style="font-weight: bold;text-align: center;"></h4>
+							</div>
+							<div class="article-subhead">
+								<h4></h4>
+							</div>
+							<div class="article-content">
+							</div>
+							<div style="text-align: right;">
+								<a id="more" class="btn btn-default" role="button">更多</a>
+							</div>
+						</a>
+						
+					<!-- </div> -->
+				</div>
+			</div>
+			
+		</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div id="donate_carousel" class="col-xs-12">
+							<ul class="donate_bar">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="container" style="margin-bottom: 0;padding-top: 0;">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="newstitle" style="margin-bottom: 0;">
+								<h3 class="title">
+									单位简介
+								</h3>
+								<div class="subtitle">
+									ABOUT US
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<!-- <div class="aboutus">
+					<div id="introduction" class="container add-bottom-margin add-no-padding-top">
+								<div class="row">
+									<div class="col-md-12 introduction-text">
+										<div class="article-head">
+											<h2></h2>
+										</div>
+										<div class="article-subhead">
+											<h3></h3>
+										</div>
+										<div class="article-content">
+										</div>
+									</div>
+								</div>
+							</div>
+				</div> -->
+					
+		<!-- <div id="main-container" class="container add-bottom-margin add-no-padding-top">
+			<div class="row aos-init aos-animate" aos="fade-down">
+				<div class="col-md-12">
+					<h3 class="title">
+						技术研发中心
+					</h3>
+					<div class="subtitle">
+						RESEARCH CENTER
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="carousel-imgs" class="col-md-8 aos-init aos-animate" aos="fade-right">
+						<img class="img-responsive animated fadeIn" src="../images/index/2.jpg">
+						<img class="img-responsive animated fadeIn" src="../images/index/3.jpg">
+						<img class="img-responsive animated fadeIn" src="../images/index/4.jpg">
+				</div>
+				<div id="carousel-bottons" class="col-md-4 list-group aos-init aos-animate" aos="fade-left">
+					<ul id="project1" class="list-group">
+						<li class="list-group-item">
+							<div class="content-left-bottom content-left-top">
+								<h4>
+									<i class="glyphicon glyphicon-ok"></i>
+									<a id="ceil_exam1" href="template-with-children.html?id=77">细胞质检</a>
+								</h4>
+									<p>“苏研院细胞质量检测平台”依据《中华人民共和国药典》（第三部）和国内外行业技术规范建立细胞质量检测方法，配置相应检测设备与实验设施，按照《检测和校准实验室能力认可准则》（CNAs-CL01）建立检测质量管量体系。</p>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="content-left-bottom content-left-top">
+								<h4><i class="glyphicon glyphicon-ok"></i><a id="ceil_treasury1" href="#">细胞库</a></h4>
+								<p>“苏研院细胞资源库”建立了细胞资源收集与存储的管理制度，具备了细胞资源储存与实现资源共享服务的能力，为医疗机构、高校院所以及科研机构等广大科研工作者提供科研性细胞资源存储、交流与共享的服务性平台。</p>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class=" content-left-bottom content-left-top">
+								<h4><i class="glyphicon glyphicon-ok"></i><a id="plasmid_treasury1" href="#">质粒库</a></h4>
+								<p>“苏研院质粒基因库” 的建立与当下中国企业及科研单位对于质粒资源在保藏及使用方面的巨大需求高度契合，一经发起就得到来自于国内不同研究科研机构、高等院校、临床医疗机构等科研专家与学术权威的积极响应。</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
+		
+				
+		<!-- <div class="container aos-init aos-animate" aos="fade-down" style="margin-bottom: 0;padding-top: 0;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="newstitle" style="margin-bottom: 0;">
+						<h3 class="title">
+							孵化转化
+						</h3>
+						<div class="subtitle">
+							TRANSFORM
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="case">
+			<div class="container add-bottom-margin">
+				<div class="row">
+					<div class="col-md-3 aos-init aos-animate" aos="fade-left">
+						<img class="img-responsive" src="../images/index/1-1Z42Q219240-L.jpg">
+						<div class="txt">
+							<div class="tit">案例展示标题四</div>
+							<p class="cont">某某自来水业务系统，是一套适合各种规模自来水公司的网络版...</p>
+							<p class="more">MORE &gt;</p>
+						</div>
+					</div>
+					<div class="col-md-3 aos-init aos-animate" aos="fade-left">
+						<img class="img-responsive" src="../images/index/1-1Z42Q219240-L.jpg">
+						<div class="txt">
+							<div class="tit">案例展示标题四</div>
+							<p class="cont">某某自来水业务系统，是一套适合各种规模自来水公司的网络版...</p>
+							<p class="more">MORE &gt;</p>
+						</div>
+					</div>
+					<div class="col-md-3 aos-init aos-animate" aos="fade-left">
+						<img class="img-responsive" src="../images/index/1-1Z42Q220070-L.jpg">
+						<div class="txt">
+							<div class="tit">案例展示标题四</div>
+							<p class="cont">某某自来水业务系统，是一套适合各种规模自来水公司的网络版...</p>
+							<p class="more">MORE &gt;</p>
+						</div>
+					</div>
+					<div class="col-md-3 aos-init aos-animate" aos="fade-left">
+						<img class="img-responsive" src="../images/index/1-1Z42Q220290-L.jpg">
+						<div class="txt">
+							<div class="tit">案例展示标题四</div>
+							<p class="cont">某某自来水业务系统，是一套适合各种规模自来水公司的网络版...</p>
+							<p class="more">MORE &gt;</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- <div class="container aos-animate" aos="fade-down" style="margin-bottom: 0;padding-top: 0;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="newstitle add-no-padding-top" style="margin-bottom: 0;">
+						<h3 class="title">
+							重要成就
+						</h3>
+						<div class="subtitle">
+							ACHIEVEMENTS
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="newscenter add-bottom-margin">
+			<div class="container add-no-padding-top ">
+				<div id="newscolumns" class="row">
+					<div class="col-md-4 aos-init aos-animate" aos="fade-right">
+						<div id="banner2">
+							<img width="100%" src="../images/index/首页底部1.jpg" alt="...">
+							<div class="txt">
+								<div class="tit">浅谈企业对于营销型网站建设存在的四个</div>
+								<div class="cont">当下不少企业都开始进行营销型网站建设，以求将线下业务转移到线上发展，从而获得更广阔...</div>
+							</div>
+						</div>
+						<div class="newscolumn">
+							<div class="col-md-4">
+								<img src="../images/index/首页底部3.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									网站内容更新技巧SEO高手
+								</div>
+								<div class="newscolumn-subtitle">
+									网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+								</div>
+							</div>
+						</div>
+						<div class="newscolumn">
+							<div class="col-md-4">
+									<img src="../images/index/首页底部3.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									网站内容更新技巧SEO高手
+								</div>
+								<div class="newscolumn-subtitle">
+									网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 aos-init aos-animate" aos="fade-left">
+						<div class="newscolumn">
+							<div class="col-md-4">
+								<div class="newscolumn-date">
+									28
+								</div>
+								<div class="newscolumn-subdate">
+									2019-01
+								</div>
+								<img src="../images/index/首页底部2.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									网站内容更新技巧SEO高手
+								</div>
+								<div class="newscolumn-subtitle">
+									网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+								</div>
+							</div>
+						</div>
+						<div class="newscolumn">
+							<div class="col-md-4">
+									<img src="../images/index/首页底部3.jpg" >
+								</div>
+								<div class="col-md-8">
+									<div class="newscolumn-title">
+										网站内容更新技巧SEO高手
+									</div>
+									<div class="newscolumn-subtitle">
+										网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+									</div>
+								</div>
+							
+						</div>
+					</div>
+					<div class="col-md-4 aos-init aos-animate" aos="fade-left">
+						<div class="newscolumn">
+								<div class="col-md-4">
+									<img src="../images/index/首页底部4.jpg" >
+								</div>
+								<div class="col-md-8">
+									<div class="newscolumn-title">
+										网站内容更新技巧SEO高手
+									</div>
+									<div class="newscolumn-subtitle">
+										网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+									</div>
+								</div>
+							
+						</div>
+						<div class="newscolumn">
+								<div class="col-md-4">
+									<img src="../images/index/首页底部5.jpg" >
+								</div>
+								<div class="col-md-8">
+									<div class="newscolumn-title">
+										网站内容更新技巧SEO高手
+									</div>
+									<div class="newscolumn-subtitle">
+										网站万丈一般是都是很让人头疼的问题，真的不知道该如何....
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ -->
+		<!-- <div class="container-fluid" style="margin-bottom: 0;padding-top: 0;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="newstitle add-no-padding-top" style="margin-bottom: 0;">
+						<h3 class="title">
+							业务分布
+						</h3>
+						<div class="subtitle">
+							DISTRIBUTION
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div class="newscenter add-bottom-margin">
+			<div class="container-fluid add-no-padding-top ">
+				<div id="achievements" class="row">
+						<div class="col-md-4">
+							<a class="newscolumn clearfix">
+								<div class="col-md-4">
+									<img src="../images/index/底部细胞库.jpg" >
+								</div>
+								<div class="col-md-8">
+									<div class="newscolumn-title">
+										细胞库
+									</div>
+									<div class="newscolumn-subtitle">
+										打造中国高品质的细胞共享存储库
+									</div>
+								</div>
+							</a>
+						</div>
+					<div class="col-md-4">
+						<a class="newscolumn clearfix">
+							<div class="col-md-4">
+									<img src="../images/index/底部质粒库.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									质粒库
+								</div>
+								<div class="newscolumn-subtitle">
+									科学严谨，开放交流
+								</div>
+							</div>
+						</a>
+					</div>	
+					<div class="col-md-4">
+						<a class="newscolumn clearfix">
+								<div class="col-md-4">
+									<img src="../images/index/底部实验设备.jpg" >
+								</div>
+								<div class="col-md-8">
+									<div class="newscolumn-title">
+										实验设备设施共享平台
+									</div>
+									<div class="newscolumn-subtitle">
+										共享科研设备，提供技术服务
+									</div>
+								</div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a class="newscolumn clearfix">
+							<div class="col-md-4">
+								<img src="../images/index/底部孵化转化.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									技术孵化转化平台
+								</div>
+								<div class="newscolumn-subtitle">
+									成果转移转化与产业孵化
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a class="newscolumn clearfix">
+							<div class="col-md-4">
+								<img src="../images/index/底部质量检测.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									细胞质量检测平台
+								</div>
+								<div class="newscolumn-subtitle">
+									专注细胞质控，助力技术创新
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-4">
+						<a class="newscolumn clearfix">
+							<div class="col-md-4">
+								<img src="../images/index/底部重大项目.jpg" >
+							</div>
+							<div class="col-md-8">
+								<div class="newscolumn-title">
+									重大科技项目
+								</div>
+								<div class="newscolumn-subtitle">
+									江苏省重大科研设施预研项目
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="ft"></div>
+	</body>
+	<script src="../js/assert/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../js/assert/bootstrap.js"></script>
+	<script src="../js/assert/aos.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common/base.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/util/util.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common/common_method.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common/load-component.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../js/common/rolling-news.js"></script>
+	<script type="text/javascript">
+		$('.carousel').carousel({
+		  interval: 6000,
+		  pause: null
+		})
+	</script>
+</html>

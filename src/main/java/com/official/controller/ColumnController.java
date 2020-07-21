@@ -324,6 +324,7 @@ public class ColumnController {
 			ftn.setLinkType(column.getLinkType());
 			ftn.setRefno(column.getRefNo());
 			ftn.setBannerPic(column.getColumnPreview());
+			ftn.setRemark(column.getRemark());
 			frontTreeNodes.add(ftn);
 
 		}
