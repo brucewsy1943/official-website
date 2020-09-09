@@ -26,7 +26,7 @@ public interface ArticleMapper {
 
     int updateByPrimaryKey(Article record);
 
-    List<ArticleDto> fuzzySearch(@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("keyword")String keyword);
+    List<ArticleDto> fuzzySearch(@Param("startTime")String startTime,@Param("endTime")String endTime,@Param("keyword")String keyword,@Param("status")Integer status);
 
     List<ArticleDto> selectArticleSlide(Integer id);
 

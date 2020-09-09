@@ -1,0 +1,219 @@
+<style type="text/css">
+	/* .btn-toggle {
+		padding: 10px;
+		background-color: transparent;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	
+	.btn-toggle-bar {
+		display: block;
+		width: 24px;
+		height: 4px;
+		background-color: #363636;
+		border-radius: 2px;
+	} */
+	
+	@media (max-width: 767px) {
+		.visible-xs {
+			display: table!important;
+		}
+	}
+	
+	@media (min-width: 768px) {
+		.navbar-nav>li>a {
+			font-size: 1.6rem;
+			font-weight: 700;
+		}
+	}
+	
+	.first-nav-background-color {
+		background: #9a2223;
+	}
+	.navbar-default .navbar-nav > li > a {
+		color: #FFF9EC;
+	}
+	@media (max-width: 767px) {
+		.img-size {
+			width: 100%!important;
+			left: 0!important;
+		}
+		.navbar-toggle {
+			float: none!important;
+		}
+	}
+	@media (min-width:1192px) {
+		#navs{
+			width: 76%;
+		}
+		#navs li{
+			width: 14%; 
+			text-align: center;
+		}
+	}
+	@media (min-width:1192px) {
+		#search{
+			width: 22%;
+		} 
+	}
+	
+		.navbar-default{
+			margin-bottom: 0px;
+			border: none;
+		}
+		.navbar{
+			border-radius: 0px;
+		}
+		.navbar-header{
+			width: 4%;
+		}
+		.navbar-form{
+			padding: 0px;
+		}
+		.navbar-right {
+			margin-right: 0px;
+		} 
+		.rolling{
+			height: 30px;
+		}
+		.navbar > .container-fluid .navbar-brand {
+			margin-left: 0px;
+		}
+		.dropdown-menu li{
+			width: 100%!important;
+		}
+		#navs li{
+			position: relative;
+		}
+		#navs li:hover{
+			color: blue!important;
+		}
+		#navs li .dropdown-menu{
+			width: 100%;
+			min-width: 20px;
+		}
+		#navs li .dropdown-menu{
+			width: 100%;
+			min-width: 20px;
+		}
+		.dropdown-menu > li > a {
+			font-weight: bold!important;
+			font-size: 1.5rem;
+		}
+		.dropdown-menu > li{
+			border-bottom: 1px solid #E8E8E8;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		.navbar-collapse{
+		 	padding-left: 0px; 
+			padding-right: 0px;
+		}
+	
+</style>
+<div class="nav-up">
+	<img style="width: 100%;" src="../images/index/nav-up.jpg" >
+</div>
+
+<nav class="navbar navbar-default first-nav-background-color"><!-- navbar-fixed-top -->
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+	<div class="row">
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul id="navs" class="nav navbar-nav">
+		    </ul>
+		    <form id="search" method="get" action="/search.html" class="navbar-form navbar-right">
+		      <div class="form-group">
+		        <input id="keyword" type="text" class="form-control" placeholder="文章搜索">
+		      </div>
+		      <button type="submit" class="btn btn-default">搜索</button>
+		    </form>
+		  </div>
+	</div>
+   </div>
+</nav>
+<script type="text/javascript">
+	var sessionStorage = window.sessionStorage;
+	var columnList = JSON.parse(sessionStorage.getItem("columnTree"));
+	//获取所有的栏目
+	generateColumnTags();
+	function generateColumnTags(){
+		var columns = columnList;
+		var li = "";
+		for (var i = 0; i < columns.length; i++) {
+			//去除首页
+			if (columns[i].nodes.length > 0 && columns[i].refno.indexOf("index")==-1) {//说明下面有二级的导航栏
+				li += '<li class="dropdown nav-menu"><a class="dropdown-toggle first-nav-color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+columns[i].text+'</a>'+getsubmenu(columns[i].nodes,columns[i].id)+'</li>'
+				continue;
+			}
+			li += '<li class="nav-menu"><a class="first-nav-color" href="'+columns[i].href+'">'+columns[i].text+'</a></li>'
+		}
+		$("#navs").append(li);
+		
+	}
+	
+	function getsubmenu(submenus,firstColumnId){
+		var submenutag = "";
+		submenutag += '<ul class="dropdown-menu animated fadeIn">';
+		for (var i = 0; i < submenus.length; i++) {
+			//因为有些是菜单下面直接就是文章,但有些不是，所以要做一个判断
+			if(submenus[i].href.indexOf("article-template")!=-1 ){
+				var articleList = getArticleListByColumn(submenus[i].id,1,1);
+				var articleId = null
+				if(articleList!=null && articleList.length > 0){
+					articleId = articleList[0].id
+				}
+				submenutag += '<li><a id="columnId'+submenus[i].id+'" href="'+submenus[i].href+'&articleId='+articleId+'">'+submenus[i].text+'</a></li>';
+				continue;
+			}
+			if (submenus[i].href!=null && submenus[i].href!=undefined && submenus[i].href.indexOf("http")!=-1) {//质粒库的,或者其他的链接，另外打开一个tab页
+				submenutag += '<li><a id="columnId'+submenus[i].id+'" target="_blank" href="'+submenus[i].href+'">'+submenus[i].text+'</a></li>';
+			}else{
+				submenutag += '<li><a id="columnId'+submenus[i].id+'" href="'+submenus[i].href+'">'+submenus[i].text+'</a></li>';
+			}
+		}
+		submenutag += '</ul>';
+		return submenutag;
+	}
+	
+	$("#banner2").children().each(function(){
+		$(this).mouseover(function() {
+			$(this).css("color","blue")
+		})
+	}) 
+	$("#search").children(":last").click(function(){
+		sessionStorage.setItem("keyword",$("#keyword").val());
+	})
+	$("#keyword").val(sessionStorage.getItem("keyword"));
+	
+		//下拉菜单添加鼠标悬停
+		$(".dropdown").each(function(){
+			$(this).children(":first").mouseover(function(){
+				//在二级下拉没有的时候
+				if($(this).parent().attr("class").indexOf("open") == -1){
+					$(this).click();
+				}
+			})
+		})
+		//鼠标移入,显示下拉菜单
+		$(".nav-menu").children(":first").mouseover(function(){
+			//在二级下拉没有的时候,触发点击事件使得菜单下拉
+				$(this).click();
+		})
+		
+		//鼠标移出,隐藏下拉菜单
+		$(".nav-menu").mouseleave(function(){
+			//在二级下拉没有的时候,触发点击事件使得菜单下拉
+				$(this).click();
+		})
+		
+	//下拉菜单中取消点击事件
+		$(".dropdown-menu").mouseleave(function(){
+			$(this).click();
+		})
+		
+		//添加banner
+		//addBanner();
+</script>

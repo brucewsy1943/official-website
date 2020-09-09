@@ -68,7 +68,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+		<!-- freemarker -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
 		 <!-- mybatis自动生成代码插件 -->
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>
@@ -156,7 +161,12 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.22</version>
     </dependency>
-    
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
 	  </dependencies>
 
 

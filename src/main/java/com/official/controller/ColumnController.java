@@ -316,7 +316,7 @@ public class ColumnController {
 		for (Column column:columns) {
 			System.out.print(column);
 			FrontTreeNode ftn = new FrontTreeNode();
-			ftn.setHref(column.getTemplate());
+			ftn.setHref(column.getTemplate()+"?columnId="+column.getId());
 			ftn.setText(column.getColumnName());
 			ftn.setTags(null);
 			ftn.setId(column.getId());
@@ -325,6 +325,7 @@ public class ColumnController {
 			ftn.setRefno(column.getRefNo());
 			ftn.setBannerPic(column.getColumnPreview());
 			ftn.setRemark(column.getRemark());
+
 			frontTreeNodes.add(ftn);
 
 		}

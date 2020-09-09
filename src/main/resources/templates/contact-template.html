@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap-treeview/bootstrap-treeview.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/animate.css" />
+		<script type="text/javascript">
+			document.write('<link rel="stylesheet" type="text/css" href="../css/common/common.css?v='+Math.random()+'"/>');
+		</script>
+		<title>苏研院官网</title>
+		<style type="text/css">
+			.table-cell-display {
+				display: table-cell;
+				vertical-align: middle;
+				height: 100%;
+			}
+
+			.banner img {
+				width: 100%;
+			}
+
+			#inner-nav a {
+				padding-left: 60px;
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			#inner-nav {
+				min-height: 30px;
+				display: table;
+				background: aliceblue;
+				width: 100%;
+			}
+
+			#tree {
+				padding-top: 15px;
+				width: 70%;
+			}
+
+			.article-head h3 {
+				text-align: center;
+			}
+
+			#main-container {
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+
+			#article-section {
+				margin-left: auto;
+				margin-right: auto;
+				width: 90%;
+			}
+
+			.content p {
+				max-width: 100%;
+				text-align: left;
+				text-indent: 2em;
+			}
+			#leave-message{
+				background-clip: content-box;
+				/* //background-color: #FAEBCC; */
+				/* border: 1px solid #E6E6E6; */
+			}
+			#leave-message .contact{
+				background-color: #FAEBCC;
+				border-radius: 5px;
+			}
+			.address p{
+				font-size: 1.5rem;
+				text-align: justify;
+				font-weight: bold;
+			}
+			.address{
+				padding-top: 5%;
+				vertical-align: bottom;
+			}
+			.contact{
+				width: 460px;
+				height: 460px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="hd"></header>
+		<!-- <div id="banner" >
+			<img class="banner" src="../images/transform/transform-banner.jpg" />
+		</div> -->
+		<!-- <nav id="inner-nav">
+			<a href="#">首页/本页</a>
+		</nav> -->
+		<div id="secondnavs"></div>
+		<div id="path-nav"></div>
+			<div id="main-container" class="container-fluid">
+				<div class="row">
+					<div id="left-part" class="hidden-xs col-sm-2">
+						<div id="treeview-selectable"></div>
+					</div>
+					<!-- 右侧部分 -->
+					<div id="right-part" class="col-sm-10">
+						<div class="col-md-6">
+							<div class="contact">
+								<img width="100%" src="../images/aboutus/地图.jpg">
+								<div class="address">
+									<p>联系方式：0512-62800308 brics@sibcb.ac.cn（邮箱）</p>
+									<p>地址：苏州工业园区金鸡湖大道99号苏州纳米城西北区10幢301室</p>
+								</div>
+							</div>
+						</div>
+						<div id="leave-message" class="col-md-6">
+							<div class="contact">
+								<div class="form-group col-md-12 text-center">
+									<h3>留言板</h3>
+								</div>
+								<form id="message-form">
+									<div class="form-group col-md-6">
+										<label>姓名</label>
+										<input type="text" name="name" class="form-control">
+									</div>
+									<div class="form-group col-md-6">
+										<label>手机</label>
+										<input type="text" name="phone" class="form-control">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="inputEmail4">Email</label>
+										<input type="email" name="email" class="form-control" id="inputEmail4">
+									</div>
+									<div class="form-group col-md-6">
+										<label>电话</label>
+										<input type="text" name="fixedPhone" class="form-control" >
+									</div>
+									<div class="form-group col-md-12">
+										<label for="company">公司</label>
+										<input type="text" name="company" class="form-control" id="company" placeholder="">
+									</div>
+									<div class="form-group col-md-12">
+										<label for="message">留言</label>
+										<textarea id="message" name="content" class="form-control" rows="3"></textarea>
+									</div>
+									<div class="form-group col-md-12 text-center">
+										<button id="submit-message" type="button" class="btn btn-primary">提交</button>
+									</div>
+								</form>
+							</div>
+						</div>
+				</div>
+			
+				</div>
+			<!-- 分页 -->
+			<div id="page"></div>
+		</div>
+		<!-- 底部 -->
+		<div id="ft">
+
+
+		</div>
+	</body>
+	<script src="../assets/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap-treeview/bootstrap-treeview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		document.write('<script src="../js/common/base.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/common_method.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>')
+		document.write('<script src="../js/util/util.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/article.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/column.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/contact-template.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/tree.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/load-component.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+	</script>
+	<!-- <script type="text/javascript" src="../js/common/tree.js"></script> -->
+</html>

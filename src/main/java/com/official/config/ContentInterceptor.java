@@ -11,6 +11,7 @@ import com.official.bean.Article;
 import com.official.service.ArticleService;
 import com.official.service.WebsiteContentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

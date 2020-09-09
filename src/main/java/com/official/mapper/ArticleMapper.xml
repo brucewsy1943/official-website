@@ -178,38 +178,38 @@
     left join t_column as c on a.columnId=c.id
     left join t_user as u on u.id=a.userId
     <where>
-    
+      1=1
     <if test='startTime!="" and endTime!="" and keyword!="" '>
-        a.pubTime BETWEEN #{startTime} and #{endTime} and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
+      AND a.pubTime BETWEEN #{startTime} and #{endTime} and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
     
     <if test='startTime!="" and endTime!="" and keyword=="" '>
-       a.pubTime BETWEEN #{startTime} and #{endTime} 
+      AND  a.pubTime BETWEEN #{startTime} and #{endTime}
     </if>
     
     <if test='startTime=="" and endTime=="" and keyword!="" '>
-     a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%'))
+      AND a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%'))
     </if>
     
     <if test='startTime!="" and endTime=="" and keyword!="" '>
-      a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00' and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
+      AND a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00' and (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
     
     <if test='startTime=="" and endTime!="" and keyword!="" '>
-      a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime} and  (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
+      AND a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime} and  (a.title like concat(concat('%',#{keyword},'%')) OR a.content LIKE concat(concat('%',#{keyword},'%')))
     </if>
-    
-    <if test='startTime=="" and endTime=="" and keyword=="" '>
-       1=1
-    </if>
+
     
     <if test='startTime!="" and endTime==""  and keyword=="" '>
-         a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00'
+      AND a.pubTime BETWEEN #{startTime} and '2099-09-01 00:00:00'
     </if>
     
     <if test='startTime=="" and endTime!=""  and keyword=="" '>
-      a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime} 
+      AND a.pubTime BETWEEN '1990-09-01 00:00:00' and #{endTime}
     </if>
+      <if test="status!=null">
+          AND status = #{status}
+      </if>
     </where>
     order by a.orderPriority, a.pubTime desc
   </select>

@@ -1,0 +1,157 @@
+<style type="text/css">
+	#secondUl {
+		height: 50px;
+		border-bottom: 1px solid #E5E5E5;
+		/* position: absolute;
+		top: 455px;
+		z-index: 99; 
+		width: 100%; */
+		background: #FFFFFF;
+	}
+
+	#secondUl>li>a:hover {
+		background: #30b7ef !important;
+		color: #FFFFFF !important;
+	}
+
+	#secondUl>li>a {
+		height: 50px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 1.8rem;
+		font-weight: bold;
+	}
+
+	#secondUl>li {
+		width: 16%;
+	}
+
+	#second-dropdown {
+		margin: 0;
+		width: 100%;
+		text-align: center;
+	}
+
+	/*强制换行*/
+	#second-dropdown a {
+		white-space:normal
+		/* white-space: nowrap; 
+		overflow: hidden; 
+		text-overflow: ellipsis; 
+		-o-text-overflow: ellipsis; */
+	}
+	/* @media print{
+		a:after{
+			content:""!important;
+		}
+	} */
+</style>
+
+<ul id="secondUl" class="nav nav-pills">
+	<!-- <li role="presentation" class="active"><a href="#">细胞质检</a></li>
+	  <li role="presentation"><a href="#">细胞研发</a></li>
+	  <li role="presentation"><a href="#">病毒定制</a></li>
+	  <li role="presentation"><a href="#">质粒库</a></li>
+	  <li role="presentation"><a href="#">细胞库</a></li> -->
+</ul>
+
+<script type="text/javascript">
+	var sessionStorage = window.sessionStorage;
+	var columnId = getColumnId();
+	var firstResult = [];
+	var secondResult = [];
+	//获取所有的二级
+	function getSecondColumns() {
+		var currentColumn = recursion(getAllColumns(),columnId, firstResult).pop();
+		console.log(currentColumn);
+		var parentColumn = recursion(getAllColumns(),currentColumn.parentId, secondResult).pop();
+		console.log(parentColumn)
+		var li = "";
+		for (var i = 0; i < parentColumn.nodes.length; i++) {
+			//这个地方写的非常帅!只要改nav.html,这里自动改!
+			//var method = $("#columnId" + parentColumn.nodes[i].id).attr("onclick");
+			var href = $("#columnId" + parentColumn.nodes[i].id).attr("href");
+			var parentColumnId = $("#columnId" + parentColumn.nodes[i].id).attr("id")
+			if (parentColumn.nodes[i].href.indexOf("http") != -1) { //质粒库的,或者只要是其他单独的子系统。都另外打开一个tab页
+				li += '<li role="presentation"><a id="second' + parentColumnId + '" target="_blank" href="' + href + '">' + parentColumn.nodes[i].text + '</a></li>'
+			} else {
+				li += '<li role="presentation"><a id="second' + parentColumnId + '"  href="' + href + '">' + parentColumn.nodes[i].text + '</a></li>'
+			}
+		}
+		$("#secondUl").append(li);
+	}
+	getSecondColumns();
+
+	//给二级目录添加点击事件
+	$("#secondUl").children().each(function() {
+
+		$(this).find("a:first").click(function() {
+			if ($(this).attr("href").indexOf("http") != -1) {
+				$(this).css("background", "#FFFFFF");
+				/* $(this).css("opacity","0"); */
+				$(this).css("color", "#337ab7");
+				$(this).css("border-bottom", "1px solid #E5E5E5");
+
+			} else {
+				$(this).css("background", "#30b7ef");
+				$(this).css("color", "#FFFFFF");
+			}
+			//sessionStorage.setItem("secondNavColumnId",$(this).attr("id"))
+		})
+	})
+	//返显颜色
+	function initSecondMenuColor() {
+		var secondcolumnId = "secondcolumnId" + getColumnId();
+		if (secondcolumnId != null && secondcolumnId != "" && $("#" + secondcolumnId).attr("href").indexOf("http") == -1) { //质粒库或者其他链接的地址除外
+			$("#" + secondcolumnId).css("background", "#30b7ef");
+			$("#" + secondcolumnId).css("color", "#FFFFFF");
+		}
+	}
+	initSecondMenuColor();
+	
+	//滚动之后在某个位置固定第二个菜单
+	$(document).scroll(function() {
+		var top = $('#secondnavs').offset().top - $(window).scrollTop(); //+ $('#secondnavs').height()
+		if (top <= 0) {
+			$('#secondUl').addClass("navbar-fixed-top")
+		}
+		if (top > 0) {
+			$('#secondUl').removeClass("navbar-fixed-top")
+		}
+	});
+	
+	//二级菜单继续添加下拉
+	var exceptionArray = ["新闻动态","业务动态","通知公告","人才招聘","组织架构","党建制度","党员活动","学习园地"];//这些菜单排除,不要下拉。需要下拉的主要集中在技术研发中心的菜单
+	$("#secondUl").children().each(function() {
+		var columnId = getNumberInStr($(this).find("a:first").attr("id"));
+		var result = [];
+		var currentColumn = recursion(getAllColumns(),columnId,result).pop();
+		var articleList = getArticleListByColumn(columnId, 1, 100);
+		//二级菜单顶级栏目的链接需要跟对应下拉的第一个相同.
+		var secondNavTopHref = $(this).find("a:first").attr("href");
+		var secondTopOnclick = $(this).find("a:first").attr("onclick");
+		if (articleList.length > 1 && exceptionArray.indexOf(currentColumn.text)==-1) {
+			var ul = '<ul id="second-dropdown" class = "dropdown-menu animated fadeIn" >'; //style="display:none"
+			for (var i = 0; i < articleList.length; i++) {
+				if(i == 0){//第一个要特殊处理,跟最上面栏目点的是一样的
+					ul += '<li><a onclick = "'+secondTopOnclick+'" href = "'+secondNavTopHref+'" >' + articleList[i].title + '</a></li>'
+						continue;
+				}
+				ul += '<li><a href = "article-template.html?articleId='+articleList[i].id+'&columnId='+columnId+'" >' + articleList[i].title + '</a></li>'
+			}
+			ul += '</ul>'
+			$(this).append(ul);
+		}
+	})
+	
+	
+	$("#secondUl").children().each(function() { //取到每一个li
+		$(this).mouseover(function() {
+			$(this).find("ul").show();
+		});
+
+		$(this).mouseleave(function() {
+			$(this).find("ul").hide();
+		});
+	})
+</script>

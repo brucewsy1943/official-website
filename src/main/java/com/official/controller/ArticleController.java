@@ -364,7 +364,7 @@ public class ArticleController {
 		 @ApiImplicitParam(name = "keyword", value = "关键字", required = false, dataType = "java.lang.String")
 	 })
 	 @PostMapping("/fuzzySearch")
-     public ResponseBean fuzzySearch(String startTime,String endTime,String keyword,Integer pageNum,Integer pageSize){
+     public ResponseBean fuzzySearch(String startTime,String endTime,String keyword,Integer pageNum,Integer pageSize,Integer status){
 		 if(startTime == null){
 			 startTime = "";
 		 }
@@ -377,7 +377,7 @@ public class ArticleController {
 		 PageDto pageDto = new PageDto();
 		 pageDto.setPageNum(pageNum);
 		 pageDto.setPageSize(pageSize);
-		 PageInfo<ArticleDto> pageInfo = articleService.fuzzySearch(startTime, endTime, keyword, pageDto);
+		 PageInfo<ArticleDto> pageInfo = articleService.fuzzySearch(startTime, endTime, keyword, pageDto,status);
 		return new ResponseBean(true, 200,"[fuzzySearch articles was successful]", pageInfo);
 		 
 	 }

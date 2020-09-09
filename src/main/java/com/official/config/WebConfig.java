@@ -20,13 +20,19 @@ public class WebConfig  implements WebMvcConfigurer {
     public HandlerInterceptor getInterceptor(){
         return new IndexInterceptor();
     }
-	
+
+	@Bean
+	public HandlerInterceptor getIPInterceptor(){
+		return new IPcountInterceptor();
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		/*registry.addInterceptor(getMyInterceptor())
 		              .addPathPatterns("/article/getInformation");*/
-		registry.addInterceptor(getInterceptor())
-		              .addPathPatterns("/article/index");
+		/*registry.addInterceptor(getInterceptor())
+		              .addPathPatterns("/article/index");*/
+		registry.addInterceptor(getIPInterceptor());
 	}
 
 	@Override

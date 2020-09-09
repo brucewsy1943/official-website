@@ -1,0 +1,164 @@
+.banner img {
+	width: 100%;
+}
+
+#inner-nav a {
+	padding-left: 60px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#inner-nav {
+	min-height: 30px;
+	display: table;
+	background: aliceblue;
+	width: 100%;
+}
+
+#tree {
+	padding-top: 15px;
+	width: 70%;
+}
+
+.article-head h3 {
+	text-align: center;
+}
+
+.article-section {
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 100px;
+	border-radius: 5px;
+	/* margin-bottom: 50px; */
+	width: 90%;
+}
+
+.article-section h2{
+	border-bottom: 1px #E8E8E8 solid;
+	padding-bottom: 20px;
+}
+
+/* .article-section img {
+	max-width: 90%;
+} */
+
+.article-head {
+	text-align: center;
+}
+
+.article-border {
+	max-width: 1350px;
+	width: 100%;
+	/* border: 1px solid #E7E7E7; */
+	margin-bottom: 50px;
+	background: #FFFFFF;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-left: auto;
+	margin-right:auto;
+}
+
+.article-section table td {
+	border: 1px solid #6C6C6C;
+}
+
+.content p {
+	max-width: 100%;
+	text-align: left;
+	text-indent: 2em;
+}
+
+#content-list .date {
+	font-size: 1.6rem;
+	color: #919797;
+	letter-spacing: 0;
+	line-height: 29px;
+	width: 100%;
+}
+
+#content-list .title {
+	font-size: 1.8rem;
+	color: #2A2E2E;
+	letter-spacing: -0.01px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-bottom: 4px;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	word-break: break-word;
+}
+
+#content-list {
+	/* margin-top: 30px; */
+	/* min-height: 200px; */
+	min-height: 100px;
+}
+
+/* .left-navbar {
+	margin-top: 15px;
+} */
+
+.clear-margin {
+	margin: 0px;
+}
+
+.recommend{
+	width: 100%;
+	/* height: 100px; */
+	display: block;
+	/* margin-bottom: 30px; */
+} 
+
+#recommend a{
+	border: 1px solid #E2E2E2;
+} 
+   
+.recommend h5{
+	margin-top: 0px;
+	white-space: nowrap; /* 因为设置了block，所以需要设置nowrap来确保不换行 */
+   overflow: hidden; /* 超出隐藏结合width使用截取采用效果*/
+   text-overflow: ellipsis; /* 本功能的主要功臣，超出部分的剪裁方式 */
+   -o-text-overflow: ellipsis; /* 特定浏览器前缀 */
+   text-align: center;
+   padding-top: 5px;
+} 
+.recommend img{
+	/* width: 130px;
+	height: 100px; */
+	margin-left: auto;
+	margin-right: auto;
+}
+.recommend p{
+	line-height: 1.8rem;
+    overflow: hidden;
+    font-size: 1.4rem;
+    color: #999;
+    float: left;
+    width: 388px;
+    text-align: justify;
+	max-width: 100%;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;  /*截取4行*/
+}
+.recommendTitle s{
+	text-decoration: line-through;
+	width: 4px;
+	height: 22px;
+	margin-right: 15px;
+	background: #30b7ef;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+
+
+body{
+	background: #f5f5f5;
+}
+.firstRow{
+	background-color: #DADADA;
+}

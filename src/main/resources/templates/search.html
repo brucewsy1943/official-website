@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<title>苏研院官网</title>
+		<link rel="stylesheet" type="text/css" href="../assets/layui/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap-treeview/bootstrap-treeview.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/animate.css" />
+		<script type="text/javascript">
+			document.write('<link rel="stylesheet" type="text/css" href="../css/common/common.css?v='+Math.random()+'"/>');
+		</script>
+
+		<style type="text/css">
+			.inner-nav {
+				height: 35px;
+			}
+
+			.left-navbar {
+				margin-top: 15px;
+			}
+
+			.clear-margin {
+				margin: 0px;
+			}
+
+			#content-list .date {
+				font-size: 1.6rem;
+				color: #919797;
+				letter-spacing: 0;
+				line-height: 29px;
+				width: 100%;
+			}
+
+			#content-list .title {
+				font-size: 1.8rem;
+				color: #2A2E2E;
+				letter-spacing: -0.01px;
+				line-height: 30px;
+				font-weight: bold;
+				margin-bottom: 4px;
+				width: 100%;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				word-break: break-word;
+			}
+			
+			#content-list{
+				min-height: 200px;
+			}
+			.introduction {
+				color: #999999;
+				line-height: 24px;
+				height: 48px;
+				overflow: hidden;
+				font-size: 1.6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="hd"></header>
+		<!-- banner -->
+	<!-- 	<div>
+			<img class="banner img-responsive" src="../images/transform/transform-banner.jpg">
+		</div> -->
+
+		<!-- <nav id='secondnavs'></nav> -->
+		<!-- 路径导航 -->
+		<div id="path-nav"></div>
+		<div class="container-fluid">
+			<div class="row">
+				<!-- leftpart navbar -->
+				<!-- <div class="hidden-xs col-md-3 left-navbar">
+					<div id="treeview-selectable"></div>
+				</div> -->
+				<!-- rightpart content -->
+				<div class="col-md-10 col-md-offset-1">
+					<h3>搜索结果：</h3>
+					<div id="content-list">
+						<div class="list-group">
+						</div>
+					</div>
+					<!-- 分页 -->
+					<div id="page"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ft"></div>
+	</body>
+
+	<script src="../assets/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap-treeview/bootstrap-treeview.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		document.write('<script src="../js/common/base.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/common_method.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>')
+		document.write('<script src="../js/util/util.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/load-component.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/article.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/column.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/search.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+	</script>
+</html>

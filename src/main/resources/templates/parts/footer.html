@@ -1,0 +1,104 @@
+<style type="text/css">
+	 .footer{
+		 height: 260px;
+		 background: #9a2223;
+		 
+	 } 
+	 .add-height{
+		 height: 100%;
+	 }
+	 .footer-img{
+		 width: 100%;
+		 height: 35%;
+	 }
+	 .footer-text p{
+		 font-size: 16px;
+		 color:ghostwhite;
+		 text-align: center;
+	 }
+	 .footer-text{
+		 margin-top: 20px;
+
+	 }
+	 .footer-img div{
+		 width: 33.3333%;
+		 padding: 15px;
+		 float: left;
+		 height: 100%;
+	 } 
+	 .footer-img div img{
+		 margin-left: auto;
+		 margin-right: auto;
+		 height: 100%;
+	 }
+	  .fixed-bottom {
+		position: fixed;
+		bottom: 0;
+		width:100%;
+	  }
+</style>
+<div class="container-fluid footer">
+	<div class="row add-height">
+		<div style="height: 10%;border-bottom: 0.5px solid white;"></div>
+		<div style="width: 70%;height: 90%; margin-left: auto;margin-right: auto;">
+			<div class="footer-img clearfix">
+				<div>
+					<img class="img-responsive" src="../images/index/ad-center.png" >
+				</div>
+				<div>
+					<img class="img-responsive" src="../images/index/ad-sip.png" >
+				</div>
+				<div>
+					<img class="img-responsive" src="../images/index/ad-right.png" >
+				</div>
+			</div>
+
+			<div class="footer-text">
+				<p style="font-weight: 700;font-size: 18px">访问量：<span id="visitNum"></span>次</p>
+				<p>联系方式：0512-62800308 brics@sibcb.ac.cn（邮箱）</p>
+				<p>生物化学与细胞生物学研究所苏州研究院 苏ICP备20000231号-1</p>
+				<p style="margin-bottom: 0">Copyright 2019-2024 www.brics.ac.cn All Right Reseved 生物化学与细胞生物学研究所苏州研究院 版权所有</p>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<script type="text/javascript">
+	$(window).resize(function(){
+	   //执行代码块
+	   resize()
+	});
+	//高度自适应
+	function resize(){
+		var contentHeight = document.body.scrollHeight;//网页正文全文高度
+	    var winHeight = $("html").height();//可视窗口高度，不包括浏览器顶部工具栏
+		var footHeight = $("#ft").height();
+		//alert('winHeight'+winHeight)
+		//alert('contentHeight' + footHeight)
+		//alert('winHeight - footHeight'+(winHeight - footHeight))
+		if(contentHeight < (winHeight)){
+			//alert('contentHeight'+contentHeight)
+			//当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+		   $("#ft").addClass("fixed-bottom")
+		}else{
+			$("#ft").removeClass("fixed-bottom")
+		}
+	}
+	$("#treeview-selectable").resize(function(){
+		resize();
+	})
+
+	getIPCount();
+	//获取访问量
+	function getIPCount() {
+		$.ajax({
+			type:"get",
+			url:baseUrl + "/IPCount/num",
+			success:function (res){
+				console.log(res)
+				$("#visitNum").html(res.data)
+			}
+		})
+	}
+	
+</script>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap-treeview/bootstrap-treeview.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/animate.css" />
+		<script type="text/javascript">
+			document.write('<link rel="stylesheet" type="text/css" href="../css/common/common.css?v='+Math.random()+'"/>');
+		</script>
+		<title>苏研院官网</title>
+		<style type="text/css">
+			.table-cell-display {
+				display: table-cell;
+				vertical-align: middle;
+				height: 100%;
+			}
+
+			.banner img {
+				width: 100%;
+			}
+
+			#inner-nav a {
+				padding-left: 60px;
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			#inner-nav {
+				min-height: 30px;
+				display: table;
+				background: aliceblue;
+				width: 100%;
+			}
+
+			#tree {
+				padding-top: 15px;
+				width: 70%;
+			}
+
+			.article-head h3 {
+				text-align: center;
+			}
+
+			#right-part ul .list-group-item {
+				border: 0px;
+			}
+
+			.list-group-item div {
+				border: 1px solid #E5E5E5;
+			}
+
+			.panel-heading {
+				background-color: #D43F3A !important;
+				color: #FBFBFB !important;
+				font-weight: bold;
+				font-size: 1.8rem;
+			}
+
+			.list-group li a label {
+				text-align: center;
+				font-weight: 400 !important;
+				font-size: 1.8rem;
+				display: block;
+				color: #000000;
+			}
+				
+			.list-group li a label:nth-child(2) {
+				text-align: center;
+				font-weight: bold;
+				font-size: 1.8rem;
+				color: #01AAED;
+				margin-top: 20px;
+			}
+
+			.list-group li div {
+				text-align: center;
+				margin-bottom: 15px;
+			}
+			#other-project li{
+				font-size:1.8rem;
+				text-align:left
+			}
+			.list-group-item a{
+				display: block;
+				border: 1px solid lightgrey;
+				max-width: 225px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			}
+			.list-group-item img{
+				width: 100%;
+			}
+			.list-group-item label{
+				margin-left: auto;
+				margin-right: auto;
+				max-width:98%;
+				text-align: center;
+			}
+			.list-group-item a label:hover{
+				cursor: pointer;
+			}
+			.panel-default {
+				border-color: #FFFFFF;
+			}
+			#main-container .panel-default{
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="hd"></header>
+		<!-- <div id="banner">
+			<img class="banner" src="" />
+		</div> -->
+		<!-- <nav id="inner-nav">
+		</nav> -->
+		<!-- <nav id='secondnavs'></nav> -->
+		<!-- 路径导航 -->
+		<div id="path-nav"></div>
+		<div id="main-container" class="container-fluid">
+			<div class="row">
+				<!-- 右侧部分 -->
+				<div id="right-part" class="col-md-10  col-md-offset-1 clearfix">
+					<div class="panel panel-default">
+						<div class="panel-heading">转移转化项目</div>
+					</div>
+					<ul id="project1" class="list-group clearfix"></ul>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">孵化项目</div>
+					</div>
+					<ul id="project2" class="list-group clearfix"></ul>
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">其他项目</div>
+					</div>
+					<ul id="other-project" class="list-group clearfix">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 底部 -->
+		<div id="ft"></div>
+		
+	</body>
+	<script src="../assets/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../assets/bootstrap-treeview/bootstrap-treeview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		document.write('<script src="../js/common/base.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/common_method.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>')
+		document.write('<script src="../js/util/util.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/load-component.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/article.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/column.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/transform-project.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+		document.write('<script src="../js/common/tree.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');
+	</script>
+	<!-- <script type="text/javascript" src="../js/transform-project.js"></script> -->
+</html>

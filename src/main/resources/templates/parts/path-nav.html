@@ -1,0 +1,48 @@
+
+<style type="text/css">
+	.breadcrumb {
+		background: none;
+		font-size: 1.6rem;
+	}
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+			<span style="font-size: 16px;">您的位置：</span>
+			<ol id="path" style="display: inline-block;" class="breadcrumb">
+				<li><a href="/index.html">首页</a></li>
+			</ol>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	//var columnId = sessionStorage.getItem("columnId");
+	var findParentColumnAray = ["政策一览","成果展示","学习园地"];//这些column的子级在显示路径的时候要显示他们父级的column
+	function getPathNav(){
+		var columnId = getColumnId();
+		//假如是search页
+		if(columnId == "" || columnId == null){//只有search页的column没有值
+			$("#path").append('<li><a href="#">文章搜索</a></li>');
+			return;
+		}
+		
+		var result = [];
+		var column = recursion(getAllColumns(),columnId,result).pop();
+		var li = "";
+		var parentColumn = getParentColumn(columnId);
+		//如果栏目的父级属于被排除菜单,则路径导航的路径里面参数是父级的columnId
+		if(findParentColumnAray.indexOf(parentColumn.text)!=-1){
+			$("#path").append('<li><a href="'+parentColumn.href+'">'+parentColumn.text+'</a></li>')
+		}else{
+			if(column.href.indexOf("article-template")!=-1){
+				$("#path").append('<li><a href="'+column.href+'&articleId='+getArticleId()+'">'+column.text+'</a></li>')
+			}else{
+				$("#path").append('<li><a href="'+column.href+'">'+column.text+'</a></li>')
+			}
+			
+		}
+		
+	}
+	getPathNav();
+</script>

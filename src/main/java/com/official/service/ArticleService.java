@@ -24,7 +24,7 @@ public interface ArticleService {
 	    int updateByPrimaryKey(Article record);
 	    
 	    
-	    PageInfo<ArticleDto> fuzzySearch(String startTime,String endTime,String keyword,PageDto pageDto);
+	    PageInfo<ArticleDto> fuzzySearch(String startTime,String endTime,String keyword,PageDto pageDto,Integer status);
 	    
 	    
 	    PageInfo<ArticleDto> selectByParentId( Integer parentId,Integer  id,PageDto pageDto);
@@ -40,4 +40,6 @@ public interface ArticleService {
 	    Integer previewPubnish(Article article);
 
 		PageInfo<ArticleDto> getByColumn(Integer columnId,PageDto pageDto);
+
+		Article getFrontArticle(Integer columnId,Integer articleId,PageDto pageDto);
 }
