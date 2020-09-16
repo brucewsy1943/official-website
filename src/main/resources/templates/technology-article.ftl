@@ -15,7 +15,7 @@
         document.write('<link rel="stylesheet" type="text/css" href="../css/article-template.css?v='+Math.random()+'"/>');
         document.write('<link rel="stylesheet" type="text/css" href="../css/bootstrap-print.css?v='+Math.random()+'"/>');
     </script>
-    <title>苏研院官网</title>
+    <title>${(article.title)!''}</title>
     <style type="text/css">
         .tit {
             padding-top: 10px;
